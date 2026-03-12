@@ -2,6 +2,12 @@ import { RequestHandler } from "express";
 import { z } from "zod";
 import { db } from "../../common/db";
 import { IdSchema } from "../../common/zod-schemas";
+import { RequestHandler } from "express";
+import { z } from "zod";
+import { db } from "../../common/db";
+import { IdSchema } from "../../common/zod-schemas";
+import type { Prisma } from "@prisma/client"; // ✅ type import for transaction
+
 
 export const createModuleSchema = z.object({
   title: z.string().min(1),
@@ -19,7 +25,7 @@ export const createModuleHandler: RequestHandler = async (req, res, next) => {
   try {
     const data = await createModuleSchema.parseAsync(req.body);
     const courseId = await IdSchema.parseAsync(req.params.courseId);
-    const newModule = await db.$transaction(async (tx) => {
+    const newModule = await db.$transaction(async (tx: Prisma.TransactionClient) => {
       // Create new module
       const moduleRecord = await tx.module.create({
         data: {
@@ -34,7 +40,7 @@ export const createModuleHandler: RequestHandler = async (req, res, next) => {
       });
 
       // Update the module order in course table
-      await db.course.update({
+      await tx.course.update({
         where: {
           id: courseId,
         },
