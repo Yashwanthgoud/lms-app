@@ -2,7 +2,7 @@ import { RequestHandler } from "express";
 import { z } from "zod";
 import { db } from "../../common/db";
 import { IdSchema } from "../../common/zod-schemas";
-import type { Prisma } from "@prisma/client"; // ✅ type import for transaction
+import type { Prisma } from "@prisma/client";
 
 export const createModuleSchema = z.object({
   title: z.string().min(1),
