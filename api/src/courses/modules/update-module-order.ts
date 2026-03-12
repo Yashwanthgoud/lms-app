@@ -31,9 +31,8 @@ export const updateModuleOrderHandler: RequestHandler = async (
       return res.sendStatus(400);
     }
 
-    const moduleIndex = courseData?.modulesOrder.findIndex(
-      (i) => i === moduleId
-    );
+
+    const moduleIndex = courseData?.modulesOrder.findIndex((i: number) => i === moduleId);
 
     if (
       moduleIndex === -1 ||
