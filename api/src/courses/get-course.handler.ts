@@ -1,8 +1,8 @@
 import { RequestHandler } from "express";
-import { db } from "../common/db";
-import { IdSchema } from "../common/zod-schemas";
-import { PrismaClient } from "@prisma/client";
-import type { Prisma } from "@prisma/client";
+import { z } from "zod";
+import { db } from "../../common/db";
+import { IdSchema } from "../../common/zod-schemas";
+import type { Prisma } from "@prisma/client"; // ✅ type import only
 
 const prisma = new PrismaClient();
 
