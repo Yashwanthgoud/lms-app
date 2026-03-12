@@ -2,7 +2,7 @@ import { RequestHandler } from "express";
 import { db } from "../common/db";
 import { IdSchema } from "../common/zod-schemas";
 import { PrismaClient } from "@prisma/client";
-import type { Prisma } from "@prisma/client"; // ✅ type import only
+import type { Prisma } from "@prisma/client"; // type-only import
 
 const prisma = new PrismaClient();
 
