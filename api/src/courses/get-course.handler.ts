@@ -2,6 +2,12 @@ import { RequestHandler } from "express";
 import { db } from "../common/db";
 import { IdSchema } from "../common/zod-schemas";
 import { Prisma } from "@prisma/client";
+import { PrismaClient, Prisma } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
+import type { Prisma } from "@prisma/client";  // ✅ use type import
+
+const prisma = new PrismaClient();
+
 
 export const getCourseHandler: RequestHandler = async (req, res, next) => {
   try {
