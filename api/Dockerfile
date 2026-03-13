@@ -1,5 +1,7 @@
 # Docker file nodejs azure app services
-FROM node:20
+# FROM node:20
+FROM public.ecr.aws/docker/library/node:20
+
 # Create app directory
 WORKDIR /app
 # Install app dependencies
